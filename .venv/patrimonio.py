@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
 import sys
 
-class CadastroCliente(QWidget):
+class Patrimonio(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -127,7 +127,7 @@ class CadastroCliente(QWidget):
 
     def cadastrar(self):
         # Vamos criar uma variável que fará refêrencia a um arquivo de texto
-        arquivo = open("patrimonio.txt", "+a") 
+        arquivo = open("patrimonio.txt", "+a", encoding="utf8") 
         arquivo.write(f"ID: {self.edit_id.text()}\n")
         arquivo.write(f"Número de série: {self.edit_serie.text()}\n")
         arquivo.write(f"Nome do patrimônio: {self.edit_nome.text()}\n")
@@ -139,16 +139,16 @@ class CadastroCliente(QWidget):
         arquivo.write(f"-----------------------------------------\n")
         arquivo.close()
 
-app = QApplication(sys.argv)
+# app = QApplication(sys.argv)
 
-# Instância da classe CadastroCliente para iniciar a janela
+# # Instância da classe CadastroCliente para iniciar a janela
 
-tela = CadastroCliente()
+# tela = Patrimonio()
 
-# Exibir a tela durante a execução 
+# # Exibir a tela durante a execução 
 
-tela.show()
+# tela.show()
 
-# Ao clicar no botão fechar a tela deve fechar e sair da memória 
+# # Ao clicar no botão fechar a tela deve fechar e sair da memória 
 
-app.exec()
+# app.exec()
