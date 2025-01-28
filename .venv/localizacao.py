@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QMessageBox
 import sys
 
 class Localizacao(QWidget):
@@ -98,17 +98,23 @@ class Localizacao(QWidget):
         self.setLayout(self.layout_v)
 
     def cadastrar(self):
-        # Vamos criar uma variável que fará refêrencia a um arquivo de texto
-        arquivo = open("localizacao.txt", "+a", encoding="utf8") 
-        arquivo.write(f"ID: {self.edit_id.text()}\n")
-        arquivo.write(f"Nome da Empresa: {self.edit_empresa.text()}\n")
-        arquivo.write(f"Logradouro: {self.edit_logradouro.text()}\n")
-        arquivo.write(f"Número do produto: {self.edit_numero.text()}\n")
-        arquivo.write(f"Prédio: {self.edit_predio.text()}\n")
-        arquivo.write(f"Andar: {self.edit_andar.text()}\n")
-        arquivo.write(f"Sala do equipamento: {self.edit_sala.text()}\n")
-        arquivo.write(f"-----------------------------------------\n")
-        arquivo.close()
+        if(self.edit_id.text()=="" or self.edit_empresa.text()=="" or self.edit_logradouro.text()=="" or self.edit_numero.text()=="" or self.edit_predio.text()=="" or self.edit_andar.text()=="" or self.edit_sala.text()=="" ):
+            QMessageBox.critical(self, "Erro", "Você deve preencher todos os campos")
+        else:
+            # Vamos criar uma variável que fará refêrencia a um arquivo de texto
+            arquivo = open("localizacao.txt", "+a", encoding="utf8") 
+            arquivo.write(f"ID: {self.edit_id.text()}\n")
+            arquivo.write(f"Nome da Empresa: {self.edit_empresa.text()}\n")
+            arquivo.write(f"Logradouro: {self.edit_logradouro.text()}\n")
+            arquivo.write(f"Número do produto: {self.edit_numero.text()}\n")
+            arquivo.write(f"Prédio: {self.edit_predio.text()}\n")
+            arquivo.write(f"Andar: {self.edit_andar.text()}\n")
+            arquivo.write(f"Sala do equipamento: {self.edit_sala.text()}\n")
+            arquivo.write(f"-----------------------------------------\n")
+            arquivo.close()
+
+            #Exibe uma mensagem de aviso  
+            QMessageBox.information(self,"Salvo","Os dados do patrimônio foram salvos",) #Da para colocar após isso com uma "," a parte de botões (quais botões aparecem na mensagem de aviso).
 
 # app = QApplication(sys.argv)
 
