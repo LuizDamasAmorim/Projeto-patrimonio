@@ -130,16 +130,15 @@ class Patrimonio(QWidget):
             QMessageBox.critical(self, "Erro", "Você deve preencher todos os campos")
         else:
         # Vamos criar uma variável que fará refêrencia a um arquivo de texto
-            arquivo = open("patrimonio.txt", "+a", encoding="utf8") 
-            arquivo.write(f"ID: {self.edit_id.text()}\n")
-            arquivo.write(f"Número de série: {self.edit_serie.text()}\n")
-            arquivo.write(f"Nome do patrimônio: {self.edit_nome.text()}\n")
-            arquivo.write(f"Tipo do produto: {self.edit_tipo.text()}\n")
-            arquivo.write(f"Descrição do produto: {self.edit_desc.text()}\n")
-            arquivo.write(f"Localização do produto: {self.edit_local.text()}\n")
-            arquivo.write(f"Data de fabricação: {self.edit_dataf.text()}\n")
-            arquivo.write(f"Data de aquisição: {self.edit_dataq.text()}\n")
-            arquivo.write(f"-----------------------------------------\n")
+            arquivo = open("patrimonio.csv", "+a", encoding="utf8") 
+            arquivo.write(f"{self.edit_id.text()};")
+            arquivo.write(f"{self.edit_serie.text()};")
+            arquivo.write(f"{self.edit_nome.text()};")
+            arquivo.write(f"{self.edit_tipo.text()};")
+            arquivo.write(f"{self.edit_desc.text()};")
+            arquivo.write(f"{self.edit_local.text()};")
+            arquivo.write(f"{self.edit_dataf.text()};")
+            arquivo.write(f"{self.edit_dataq.text()}\n")
             arquivo.close()
 
             #Exibe uma mensagem de aviso  
